@@ -16,12 +16,23 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.zoom-out-animation {
+  transform: scale(5.5); /* Larger before zooming out, adjust as needed */
+}
+
+.normal-size {
+  transform: scale(5.5); /* Initial size */
+  animation: zoomOutAnimation 0.5s ease-in-out forwards;
+}
+
+@keyframes zoomOutAnimation {
+
+  0% {
+    transform: scale(5.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+  
 }
