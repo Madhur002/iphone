@@ -10,7 +10,7 @@ export default function Home() {
   const [showHomeScreen, setShowHomeScreen] = useState(false);
   const [powerOn, setPowerOn] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-
+  const [focus, setFocus] = useState(0)
   useEffect(() => {
     const pillBar: any = pillBarRef.current;
     const followPill: any = followPillRef.current;
@@ -27,10 +27,15 @@ export default function Home() {
       if (isDragging) {
         const rect = pillBar.getBoundingClientRect();
         const offsetY = e.clientY - rect.top;
-
+        console.log("rect")
+        console.log(rect)
+        console.log("offsetY")
+        console.log(offsetY)
         // Update the position of the follow pill
         followPill.style.bottom = `${rect.height - offsetY}px`;
-
+        console.log("followPill.style.bottom")
+        console.log(followPill.style.bottom)
+        setFocus(followPill.style.bottom)
         if (offsetY <= 200) {
           setShowHomeScreen(true);
         }
@@ -52,9 +57,14 @@ export default function Home() {
   }, [isDragging]);
 
   const handlePowerOn = () => {
-    setPowerOn(true);
+    setPowerOn(!powerOn);
+    setShowHomeScreen(false);
+    setFocus(0)
   };
 
+  console.log("focus");
+  console.log(focus);
+  
   return (
     <main className="flex bg-white z-[50000] min-h-screen items-center justify-center p-24">
       <div className="h-[603px] w-[303px] bg-[#cdbabc] flex justify-center items-center rounded-[50px]">
@@ -66,9 +76,20 @@ export default function Home() {
               {powerOn && (<>
               <div className="bg-black rounded-full mt-2 w-20 h-[22px] z-10 absolute"></div>
               <Image
-                className={`${
+                className={`blur z-[1] zoom-out-animation ${
+                  showHomeScreen ? "hidden" : "backdrop-blur-lg absolute rounded-[35px]"
+                }`}
+                src="/homescreen.png"
+                layout="fill"
+                objectFit="cover"
+                objectPosition="center"
+                alt=""
+              />
+              <Image
+                className={` z-[2] ${
                   showHomeScreen ? "hidden" : "absolute rounded-[35px]"
                 }`}
+                style={{marginTop: `-${focus}`}}
                 src="/wallpaper.jpg"
                 layout="fill"
                 objectFit="cover"
