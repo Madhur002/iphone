@@ -17,26 +17,33 @@
 }
 
 .zoom-out-animation {
-  transform: scale(5.5); /* Larger before zooming out, adjust as needed */
+  transform: scale(5.5);
+  backdrop-filter: blur(30px); /* Larger before zooming out, adjust as needed */
 }
 
 .normal-size {
   transform: scale(5.5); /* Initial size */
+  backdrop-filter: blur(30px) !important;
   animation: zoomOutAnimation 0.5s ease-in-out forwards;
 }
 
 @keyframes zoomOutAnimation {
-
   0% {
     transform: scale(5.5);
+    backdrop-filter: blur(30px) !important;
   }
 
   100% {
     transform: scale(1);
+    backdrop-filter: blur(0px) !important;
   }
-  
 }
 
-.blur{
+.blur {
   backdrop-filter: blur(30px) !important;
+}
+
+.grad1{
+  background: rgb(49,67,81);
+  background: linear-gradient(0deg, rgba(49,67,81,1) 22%, rgba(54,72,85,1) 40%, rgba(71,84,93,1) 56%, rgba(98,113,124,1) 79%); 
 }
