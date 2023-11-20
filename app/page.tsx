@@ -44,15 +44,22 @@ export default function Home() {
         // }
       }
     };
-
     pillBar.addEventListener("mousedown", handleDragStart);
     pillBar.addEventListener("mouseup", handleDragEnd);
     document.addEventListener("mousemove", handleDrag);
+
+    pillBar.addEventListener("touchstart", handleDragStart);
+    pillBar.addEventListener("touchend", handleDragEnd);
+    document.addEventListener("touchmove", handleDrag);
 
     return () => {
       pillBar.removeEventListener("mousedown", handleDragStart);
       pillBar.removeEventListener("mouseup", handleDragEnd);
       document.removeEventListener("mousemove", handleDrag);
+
+      pillBar.removeEventListener("touchstart", handleDragStart);
+      pillBar.removeEventListener("touchend", handleDragEnd);
+      document.removeEventListener("touchmove", handleDrag);
     };
   }, [isDragging]);
 
