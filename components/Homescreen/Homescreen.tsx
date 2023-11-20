@@ -11,7 +11,7 @@ const Homescreen = ({ showHomeScreen }: any) => {
         showHomeScreen ? "normal-size" : ""
       }`}
     >
-      <NotificationPanel />
+      <NotificationPanel color={"white"} />
       <AppDrawer />
       <SearchBar/>
       <Navbar />

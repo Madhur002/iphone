@@ -4,6 +4,9 @@ import Image from "next/image";
 import "animate.css";
 import { FaPowerOff } from "react-icons/fa";
 import Homescreen from "./Homescreen/Homescreen";
+import NotificationPanel from "./NotificationPanel/NotificationPanel";
+import { IoLockClosed } from "react-icons/io5";
+import { IoLockOpen } from "react-icons/io5";
 
 export default function Home() {
   const pillBarRef = useRef(null);
@@ -11,6 +14,7 @@ export default function Home() {
   const [showHomeScreen, setShowHomeScreen] = useState(false);
   const [powerOn, setPowerOn] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [unlock, setUnlock] = useState(false);
   const [touchStartPosition, setTouchStartPosition] = useState(0);
   const [focus, setFocus] = useState(0);
   useEffect(() => {
@@ -22,6 +26,7 @@ export default function Home() {
       setTouchStartPosition(
         e.clientY || (e.touches && e.touches[0].clientY) || 0
       );
+      setUnlock(true)
     };
 
     const handleDragEnd = () => {
@@ -87,12 +92,12 @@ export default function Home() {
       <div className="h-[603px] w-[303px] bg-[#cdbabc] flex justify-center items-center rounded-[50px]">
         <div className="flex z-50 flex-col items-center justify-between h-[600px] w-[300px] bg-black border-4 border-[#f3dadd] rounded-[50px] p-[10px]">
           <div
-            className="h-full overflow-hidden w-full z-10 rounded-[35px] bg-black flex justify-center relative"
+            className="h-full overflow-hidden w-full z-10 rounded-[35px] bg-black flex flex-col items-center relative"
             ref={pillBarRef}
           >
             {powerOn && (
               <>
-                <div className="bg-black rounded-full mt-2 w-20 h-[22px] z-10 absolute"></div>
+                <div className={`${showHomeScreen ? "bg-black rounded-full mt-2 w-20 h-[22px] z-10 absolute": "bg-black rounded-full text-white flex justify-start items-center mt-2 w-24 text-[11px] pl-[6px] h-[22px] z-10 absolute"}`}>{ unlock === true ? (<><IoLockOpen /></>):(<><IoLockClosed /></>)}</div>
                 <Image
                   className={`blur z-[1] zoom-out-animation ${
                     showHomeScreen
@@ -105,6 +110,9 @@ export default function Home() {
                   objectPosition="center"
                   alt=""
                 />
+                <div className={`${showHomeScreen ? "hidden" : "mt-3 z-[300] w-full"}`}>
+                <NotificationPanel color={"black"}/>
+                </div>
                 <Image
                   className={` z-[2] ${
                     showHomeScreen ? "hidden" : "absolute rounded-[35px]"
@@ -134,7 +142,7 @@ export default function Home() {
                 {/* Below is the pill */}
                 {!showHomeScreen && (
                   <div
-                    className="bg-white rounded-full h-1 w-28 mb-1 z-10 absolute bottom-0 cursor-pointer"
+                    className="bg-white rounded-full h-1 w-28 mb-2 z-10 absolute bottom-0 cursor-pointer"
                     ref={followPillRef}
                   ></div>
                 )}
@@ -158,7 +166,7 @@ export default function Home() {
         <div className="h-full overflow-hidden w-full z-10 rounded-[35px] bg-black flex justify-center relative">
           <Image
             className={`absolute rounded-[35px]`}
-            src="/homescreen.png"
+            src="/lockscreen.png"
             layout="fill"
             objectFit="cover"
             objectPosition="center"
