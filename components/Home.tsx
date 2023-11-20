@@ -7,6 +7,7 @@ import Homescreen from "./Homescreen/Homescreen";
 import NotificationPanel from "./NotificationPanel/NotificationPanel";
 import { IoLockClosed } from "react-icons/io5";
 import { IoLockOpen } from "react-icons/io5";
+import { BsFillUnlockFill } from "react-icons/bs";
 
 export default function Home() {
   const pillBarRef = useRef(null);
@@ -56,6 +57,9 @@ export default function Home() {
         if (offsetY <= 200 || touchMoveDistance >= 50) {
           setShowHomeScreen(true);
         }
+        if (offsetY <= 10 || touchMoveDistance >= 10) {
+          setUnlock(true)
+        }
       }
     };
 
@@ -82,6 +86,7 @@ export default function Home() {
     setPowerOn(!powerOn);
     setShowHomeScreen(false);
     setFocus(0);
+    setUnlock(false)
   };
 
   console.log("focus");
@@ -97,7 +102,7 @@ export default function Home() {
           >
             {powerOn && (
               <>
-                <div className={`${showHomeScreen ? "bg-black rounded-full mt-2 w-20 h-[22px] z-10 absolute": "bg-black rounded-full text-white flex justify-start items-center mt-2 w-24 text-[11px] pl-[6px] h-[22px] z-10 absolute"}`}>{ unlock === true ? (<><IoLockOpen /></>):(<><IoLockClosed /></>)}</div>
+                <div className={`${showHomeScreen ? "bg-black rounded-full mt-2 w-20 h-[22px] z-10 absolute": "bg-black rounded-full text-white flex justify-start items-center mt-2 w-24 text-[11px] pl-[6px] h-[22px] z-10 absolute"}`}>{ unlock ? (<BsFillUnlockFill />):(<IoLockClosed />)}</div>
                 <Image
                   className={`blur z-[1] zoom-out-animation ${
                     showHomeScreen
