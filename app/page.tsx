@@ -10,40 +10,47 @@ export default function Home() {
   const [showHomeScreen, setShowHomeScreen] = useState(false);
   const [powerOn, setPowerOn] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [touchStartPosition, setTouchStartPosition] = useState(0);
   const [focus, setFocus] = useState(0)
   useEffect(() => {
     const pillBar: any = pillBarRef.current;
     const followPill: any = followPillRef.current;
 
-    const handleDragStart = () => {
+    const handleDragStart = (e: any) => {
       setIsDragging(true);
+      setTouchStartPosition(e.clientY || (e.touches && e.touches[0].clientY) || 0);
     };
 
     const handleDragEnd = () => {
       setIsDragging(false);
+      setTouchStartPosition(0);
     };
 
     const handleDrag = (e: any) => {
       if (isDragging) {
         const rect = pillBar.getBoundingClientRect();
-        const offsetY = e.clientY - rect.top;
-        console.log("rect")
-        console.log(rect)
-        console.log("offsetY")
-        console.log(offsetY)
+        let offsetY: any;
+
+        if (e.clientY) {
+          // Mouse event
+          offsetY = e.clientY - rect.top;
+        } else if (e.touches && e.touches[0]) {
+          // Touch event
+          offsetY = e.touches[0].clientY - rect.top;
+        }
+
+        const touchMoveDistance = offsetY - touchStartPosition;
+
         // Update the position of the follow pill
         followPill.style.bottom = `${rect.height - offsetY}px`;
-        console.log("followPill.style.bottom")
-        console.log(followPill.style.bottom)
-        setFocus(followPill.style.bottom)
-        if (offsetY <= 200) {
+        setFocus(followPill.style.bottom);
+
+        if (offsetY <= 200 || touchMoveDistance >= 50) {
           setShowHomeScreen(true);
         }
-        //  else {
-        //   setShowHomeScreen(false);
-        // }
       }
     };
+
     pillBar.addEventListener("mousedown", handleDragStart);
     pillBar.addEventListener("mouseup", handleDragEnd);
     document.addEventListener("mousemove", handleDrag);
@@ -61,7 +68,8 @@ export default function Home() {
       pillBar.removeEventListener("touchend", handleDragEnd);
       document.removeEventListener("touchmove", handleDrag);
     };
-  }, [isDragging]);
+  }, [isDragging, touchStartPosition]);
+
 
   const handlePowerOn = () => {
     setPowerOn(!powerOn);
