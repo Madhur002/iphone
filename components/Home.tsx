@@ -18,6 +18,7 @@ export default function Home() {
   const [unlock, setUnlock] = useState(false);
   const [touchStartPosition, setTouchStartPosition] = useState(0);
   const [focus, setFocus] = useState(0);
+  const [newFocus, setNewFocus] = useState("");
   useEffect(() => {
     const pillBar: any = pillBarRef.current;
     const followPill: any = followPillRef.current;
@@ -53,11 +54,12 @@ export default function Home() {
         // Update the position of the follow pill
         followPill.style.bottom = `${rect.height - offsetY}px`;
         setFocus(followPill.style.bottom);
+        setNewFocus(`${rect.height - offsetY + 80}px`)
 
         if (offsetY <= 200 || touchMoveDistance >= 50) {
           setShowHomeScreen(true);
         }
-        if (offsetY <= 10 || touchMoveDistance >= 10) {
+        if (offsetY <= 50 || touchMoveDistance >= 25) {
           setUnlock(true)
         }
       }
@@ -86,6 +88,7 @@ export default function Home() {
     setPowerOn(!powerOn);
     setShowHomeScreen(false);
     setFocus(0);
+    setNewFocus("")
     setUnlock(false)
   };
 
@@ -97,33 +100,33 @@ export default function Home() {
       <div className="h-[603px] w-[303px] bg-[#cdbabc] flex justify-center items-center rounded-[50px]">
         <div className="flex z-50 flex-col items-center justify-between h-[600px] w-[300px] bg-black border-4 border-[#f3dadd] rounded-[50px] p-[10px]">
           <div
-            className="h-full overflow-hidden w-full z-10 rounded-[35px] bg-black flex flex-col items-center relative"
+            className="h-full select-none overflow-hidden w-full z-10 rounded-[35px] flex flex-col items-center relative"
             ref={pillBarRef}
           >
             {powerOn && (
               <>
-                <div className={`${showHomeScreen ? "bg-black rounded-full mt-2 w-20 h-[22px] z-10 absolute": "bg-black rounded-full text-white flex justify-start items-center mt-2 w-24 text-[11px] pl-[6px] h-[22px] z-10 absolute"}`}>{ unlock ? (<BsFillUnlockFill />):(<IoLockClosed />)}</div>
-                <Image
-                  className={`blur z-[1] zoom-out-animation ${
+                <div className={`draggable-none select-none ${showHomeScreen ? "bg-black rounded-full mt-2 w-20 h-[22px] z-10 absolute": "bg-black rounded-full text-white flex justify-start items-center mt-2 w-24 text-[11px] pl-[6px] h-[22px] z-10 absolute"}`}>{ unlock ? (<BsFillUnlockFill />):(<IoLockClosed />)}</div>
+                {/* <Image
+                  className={`draggable-none blur z-[1] fixed select-none zoom-out-animation ${
                     showHomeScreen
                       ? "hidden"
-                      : "backdrop-blur-lg absolute rounded-[35px]"
+                      : "backdrop-blur-lg scale-[5.5] absolute rounded-[35px]"
                   }`}
                   src="/homescreen.png"
                   layout="fill"
                   objectFit="cover"
                   objectPosition="center"
                   alt=""
-                />
-                <div className={`${showHomeScreen ? "hidden" : "mt-3 z-[300] w-full"}`}>
+                /> */}
+                <div className={`select-none ${showHomeScreen ? "hidden" : "mt-3 z-[300] w-full"}`}>
                 <NotificationPanel color={"black"}/>
                 </div>
                 <Image
-                  className={` z-[2] ${
+                  className={`draggable-none select-none z-[2] ${
                     showHomeScreen ? "hidden" : "absolute rounded-[35px]"
                   }`}
                   style={{ marginTop: `-${focus}` }}
-                  src="/wallpaper.jpg"
+                  src="/lockscreenWallpaper.jpg"
                   layout="fill"
                   objectFit="cover"
                   objectPosition="center"
@@ -133,7 +136,7 @@ export default function Home() {
                   <>
                   <Homescreen showHomeScreen={showHomeScreen}/>
                   <Image
-                    className={`absolute zoom-out-animation rounded-[35px] ${
+                    className={`draggable-none absolute select-none rounded-[35px] ${
                       showHomeScreen ? "normal-size" : ""
                     }`}
                     src="/wallpaper1.jpg"
@@ -145,9 +148,12 @@ export default function Home() {
                   </>
                 )}
                 {/* Below is the pill */}
+                <div style={{ marginTop: `-${newFocus}` }} className={`select-none ${showHomeScreen ? "hidden" : "mb-8 h-full mt-3 flex justify-center items-end z-[300] w-full text-[#ffffff] font-semibold tracking-wider text-[8px]"}`}>
+                Swipe up to unlock
+                </div>
                 {!showHomeScreen && (
                   <div
-                    className="bg-white rounded-full h-1 w-28 mb-2 z-10 absolute bottom-0 cursor-pointer"
+                    className="bg-white rounded-full h-1 w-28 mb-3 z-10 absolute bottom-0 cursor-pointer"
                     ref={followPillRef}
                   ></div>
                 )}
@@ -163,14 +169,14 @@ export default function Home() {
           }}
           className="text-gray-400 font-semibold flex gap-2 mt-[150px] ml-4 items-center"
         >
-          <FaPowerOff className="text-white bg-gray-300 p-2 text-3xl rounded-full" />
-          <p className="pt-1"> Power on</p>
+          <FaPowerOff className="text-white bg-gray-300 select-none p-2 text-3xl rounded-full" />
+          <p className="pt-1 select-none"> Power on</p>
         </button>
       </div>
       <div className="flex z-50 flex-col items-center justify-between h-[600px] w-[300px] bg-black border-4 border-[#f3dadd] rounded-[50px] p-[10px]">
-        <div className="h-full overflow-hidden w-full z-10 rounded-[35px] bg-black flex justify-center relative">
+        <div className="h-full  select-none overflow-hidden w-full z-10 rounded-[35px] bg-black flex justify-center relative">
           <Image
-            className={`absolute rounded-[35px]`}
+            className={`absolute select-none rounded-[35px]`}
             src="/lockscreen.png"
             layout="fill"
             objectFit="cover"

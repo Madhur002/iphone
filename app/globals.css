@@ -18,12 +18,12 @@
 
 .zoom-out-animation {
   transform: scale(5.5);
-  backdrop-filter: blur(30px); /* Larger before zooming out, adjust as needed */
+  /* backdrop-filter: blur(30px); */
 }
 
 .normal-size {
   transform: scale(5.5); /* Initial size */
-  backdrop-filter: blur(30px) !important;
+  /* backdrop-filter: blur(30px) !important; */
   animation: zoomOutAnimation 0.5s ease-in-out forwards;
 }
 
@@ -47,3 +47,17 @@
   background: rgb(49,67,81);
   background: linear-gradient(0deg, rgba(49,67,81,1) 22%, rgba(54,72,85,1) 40%, rgba(71,84,93,1) 56%, rgba(98,113,124,1) 79%); 
 }
+
+/* Add your other styles
+.active-card {
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.swiping-left {
+  transform: translateX(-100%);
+}
+
+.swiping-right {
+  transform: translateX(100%);
+} */
