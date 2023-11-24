@@ -113,15 +113,13 @@ const HomeScreen1 = () => {
             FaceTime
           </div>
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
-              <Image
-                className="absolute select-none "
-                src="/icons/Calendar.png"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-                alt=""
-              />
+            <button className="h-10 flex gap-[2px] justify-center flex-col items-center w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
+              <p className=" select-none flex gap-1 items-center text-[6px] text-[#e0797c] font-bold uppercase">
+                {daysOfWeek[currentDate.getDay()]}
+              </p>
+              <p className=" select-none text-black text-[18px] mt-[-7px] font-normal ">
+                {currentDate.getDate()}
+              </p>
             </button>
             Calendar
           </div>

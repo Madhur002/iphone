@@ -8,7 +8,8 @@ import NotificationPanel from "./NotificationPanel/NotificationPanel";
 import { IoLockClosed } from "react-icons/io5";
 import { IoLockOpen } from "react-icons/io5";
 import { BsFillUnlockFill } from "react-icons/bs";
-
+import { IoIosFlashlight } from "react-icons/io";
+import { HiCamera } from "react-icons/hi2";
 export default function Home() {
   const pillBarRef = useRef(null);
   const followPillRef = useRef(null);
@@ -95,6 +96,30 @@ export default function Home() {
   console.log("focus");
   console.log(focus);
 
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+
+  useEffect(() => {
+    // Update the currentDateTime every second
+    const interval = setInterval(() => {
+      setCurrentDateTime(new Date());
+    }, 1000);
+
+    // Clear the interval on component unmount
+    return () => clearInterval(interval);
+  }, []);
+
+  const formattedDate = currentDateTime.toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+  });
+
+  const formattedTime = currentDateTime.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: false,
+  });
+
   return (
     <main className="flex bg-white z-[50000] min-h-screen items-center justify-center p-24">
       <div className="h-[603px] w-[303px] bg-[#cdbabc] flex justify-center items-center rounded-[50px]">
@@ -148,8 +173,22 @@ export default function Home() {
                   </>
                 )}
                 {/* Below is the pill */}
-                <div style={{ marginTop: `-${newFocus}` }} className={`select-none ${showHomeScreen ? "hidden" : "mb-8 h-full mt-3 flex justify-center items-end z-[300] w-full text-[#ffffff] font-semibold tracking-wider text-[8px]"}`}>
+                <div style={{ marginTop: `-${newFocus}` }} className={`select-none ${showHomeScreen ? "hidden" : " mb-8 h-full mt-3 flex flex-col justify-between items-center z-[300] w-full text-[#201f1f] font-semibold tracking-wider text-[8px]"}`}>
+                  <div className="text-[#ffcacae5] mt-3 gap-1 w-full flex flex-col items-center justify-start">
+                    <p className="text-sm">{formattedDate}</p>
+                    <p className="text-6xl font-semibold flex items-center">{formattedTime}</p>
+                  </div>
+                  <div className="flex w-full justify-evenly items-center">
+                    <div className="p-2 rounded-full bg-[#0000005e] text-white text-xl">
+                        <IoIosFlashlight/>
+                    </div>
+                <p className=" text-[#ffffff] h-full flex justify-center items-end font-semibold tracking-wider text-[8px]">
                 Swipe up to unlock
+                  </p>  
+                    <div className="p-2 rounded-full bg-[#0000005e] text-white text-xl">
+                        <HiCamera/>
+                    </div>
+                  </div>
                 </div>
                 {!showHomeScreen && (
                   <div
@@ -173,7 +212,7 @@ export default function Home() {
           <p className="pt-1 select-none"> Power on</p>
         </button>
       </div>
-      <div className="flex z-50 flex-col items-center justify-between h-[600px] w-[300px] bg-black border-4 border-[#f3dadd] rounded-[50px] p-[10px]">
+      {/* <div className="flex z-50 flex-col items-center justify-between h-[600px] w-[300px] bg-black border-4 border-[#f3dadd] rounded-[50px] p-[10px]">
         <div className="h-full  select-none overflow-hidden w-full z-10 rounded-[35px] bg-black flex justify-center relative">
           <Image
             className={`absolute select-none rounded-[35px]`}
@@ -184,7 +223,7 @@ export default function Home() {
             alt=""
           />
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }

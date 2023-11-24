@@ -9,7 +9,7 @@ import HomeScreen2 from "../Homescreen/HomeScreen2";
 const AppDrawer = () => {
 
   return (
-    <div className="select-none antialiased flex pt-4 justify-center items-center h-full w-full rounded-2xl">
+    <div className="select-none flex pt-4 justify-center items-center h-full w-full rounded-2xl">
       <Swiper
         style={{ height: "100%", width: "100%" }}
         spaceBetween={30}
