@@ -323,7 +323,7 @@ function removeAnimateClass() {
 
 
   return (
-    <main className="flex bg-white z-[50000] min-h-screen items-center justify-center p-24">
+    <main className="sm:flex-col md:flex-col sm:items-center md:items-center flex bg-white z-[50000] h-screen overflow-hidden items-center justify-center p-24">
       <div className="h-[603px] w-[303px] bg-[#cdbabc] flex justify-center items-center rounded-[50px]">
         <div className="flex z-50 flex-col items-center justify-between h-[600px] w-[300px] bg-black border-4 border-[#f3dadd] rounded-[50px] p-[10px]">
           <div
@@ -452,7 +452,7 @@ function removeAnimateClass() {
           </div>
         </div>
       </div>
-      <div className="h-[603px]">
+      <div className="h-[603px] sm:h-[150px] md:h-[150px]">
         <button
           onClick={() => {
             handlePowerOn();
