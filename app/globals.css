@@ -70,3 +70,22 @@ body{
   background-color: rgba(247, 247, 247, 0.123);
   backdrop-filter: blur(30px) !important;
 }
+
+.backBG {
+  background-color: rgba(247, 247, 247, 0.123);
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+  opacity: 0; /* Set initial opacity to 0 */
+  animation: fadeIn 1s ease-in-out forwards; /* Use a fadeIn animation with a duration of 1 second */
+
+  /* Optionally, you can add other transition properties like transition-delay */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start with opacity 0 */
+  }
+  to {
+    opacity: 1; /* End with opacity 1 */
+  }
+}

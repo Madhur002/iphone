@@ -11,6 +11,7 @@ import { BsFillUnlockFill } from "react-icons/bs";
 import { IoIosFlashlight } from "react-icons/io";
 import { HiCamera } from "react-icons/hi2";
 import 'animate.css';
+import ControlCenter from "./NotificationPanel/ControlCenter";
 
 export default function Home() {
   const pillBarRef = useRef(null);
@@ -295,45 +296,47 @@ export default function Home() {
     hour12: false,
   });
 
-  if (showNotificationCenter) {
-    setTimeout(removeAnimateClass, 800); // 200 milliseconds delay
-  }
-  if (showControlCenter) {
-    setTimeout(removeAnimateClass, 800); // 200 milliseconds delay
-  }
+  // if (showNotificationCenter) {
+  //   setTimeout(removeAnimateClass, 800); // 200 milliseconds delay
+  // }
+  // if (showControlCenter) {
+  //   setTimeout(removeAnimateClass, 800); // 200 milliseconds delay
+  // }
   // Define a function to remove the animate_animated class
-function removeAnimateClass() {
-  // Select the div elements by their class names
-  const notificationCenterDiv = document.querySelector('.notification-center');
-  const controlCenterDiv = document.querySelector('.control-center');
+// function removeAnimateClass() {
+//   // Select the div elements by their class names
+//   const notificationCenterDiv = document.querySelector('.notification-center');
+//   const controlCenterDiv = document.querySelector('.control-center');
 
-  // Check if the div elements exist before trying to remove the class
-  if (notificationCenterDiv) {
-    notificationCenterDiv.classList.remove('animate_animated');
-    notificationCenterDiv.classList.remove('bg-[#ffffff21]');
-    notificationCenterDiv.classList.remove('animate__fadeInDown');
-  }
+//   // Check if the div elements exist before trying to remove the class
+//   // if (notificationCenterDiv) {
+//   //   notificationCenterDiv.classList.remove('animate_animated');
+//   //   notificationCenterDiv.classList.remove('bg-[#ffffff80]');
+//   //   notificationCenterDiv.classList.add('bg-[#ffffff21]');
+//   //   notificationCenterDiv.classList.remove('animate__fadeInDown');
+//   // }
 
-  if (controlCenterDiv) {
-    controlCenterDiv.classList.remove('animate_animated');
-    controlCenterDiv.classList.remove('bg-[#ffffff21]');
-    controlCenterDiv.classList.remove('animate__fadeInDown');
-  }
-}
+//   if (controlCenterDiv) {
+//     controlCenterDiv.classList.remove('animate_animated');
+//     controlCenterDiv.classList.remove('bg-[#ffffff80]');
+//     controlCenterDiv.classList.add('bg-[#ffffff21]');
+//     controlCenterDiv.classList.remove('animate__fadeInDown');
+//   }
+// }
 
 
   return (
-    <main className="flex bg-white z-[50000] h-screen overflow-hidden items-center justify-center p-24">
-      <div className="h-[603px] w-[303px] bg-[#cdbabc] flex justify-center items-center rounded-[50px]">
-        <div className="flex z-50 flex-col items-center justify-between h-[600px] w-[300px] bg-black border-4 border-[#f3dadd] rounded-[50px] p-[10px]">
+    <main className="select-none flex bg-white z-[50000] h-screen overflow-hidden items-center justify-center p-24">
+      <div className="select-none h-[603px] w-[303px] bg-[#cdbabc] flex justify-center items-center rounded-[50px]">
+        <div className="select-none flex z-50 flex-col items-center justify-between h-[600px] w-[300px] bg-black border-4 border-[#f3dadd] rounded-[50px] p-[10px]">
           <div
-            className="h-full overflow-hidden w-full z-10 rounded-[35px] flex flex-col items-center relative"
+            className="select-none h-full overflow-hidden w-full z-10 rounded-[35px] flex flex-col items-center relative"
             ref={pillBarRef}
           >
             {powerOn && (
               <>
                 <div
-                  className={`z-[999] draggable-none select-none ${
+                  className={`z-[9999] draggable-none select-none ${
                     showHomeScreen
                       ? "bg-black rounded-full mt-[6px] w-20 h-[22px] z-10 absolute"
                       : "bg-black rounded-full text-white flex justify-start items-center mt-[6px] w-24 text-[11px] pl-[6px] h-[22px] z-10 absolute"
@@ -354,7 +357,7 @@ function removeAnimateClass() {
                   alt=""
                 /> */}
                 <div
-                  className={`select-none ${
+                  className={`select-none draggable-none ${
                     showHomeScreen ? "hidden" : "mt-3 z-[300] w-full"
                   }`}
                 >
@@ -373,7 +376,7 @@ function removeAnimateClass() {
                 />
                 {showHomeScreen && (
                   <>
-                  <div className="bg-transparent h-full w-full absolute flex justify-between"
+                  <div className="draggable-none bg-transparent h-full w-full absolute flex justify-between"
                     style={{zIndex: "49"}}>
                     <div
                       className="bg-transparent h-full w-[50%] relative"
@@ -389,12 +392,14 @@ function removeAnimateClass() {
                     </div>
                     </div>
                       <div
-                        className={`backdrop-blur-3xl bg-[#ffffff21] notification-center ${showNotificationCenter ? `animate__animated animate__fadeInDown w-full z-[99999999] h-full absolute`: `hidden`}`}
+                        className={`notification-center ${showNotificationCenter ? `backBG w-full z-[999] h-full absolute flex justify-center items-center`: `hidden`}`}
                         >
+                          <ControlCenter/>
                       </div>
                       <div
-                        className={`backdrop-blur-3xl bg-[#ffffff21] control-center ${showControlCenter ? `animate__animated animate__fadeInDown w-full z-[99999999] h-full absolute`: `hidden`}`}
+                        className={`control-center ${showControlCenter ? `backBG w-full z-[999] h-full absolute flex justify-end items-center`: `hidden`}`}
                         >
+                          <ControlCenter/>
                       </div>
 
 
