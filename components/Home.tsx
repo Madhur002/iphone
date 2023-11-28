@@ -399,7 +399,7 @@ export default function Home() {
                       <div
                         className={`control-center ${showControlCenter ? `backBG w-full z-[999] h-full absolute flex justify-end items-center`: `hidden`}`}
                         >
-                          <ControlCenter/>
+                          <ControlCenter setShowControlCenter={setShowControlCenter} setIsControlerCenterDragging={setIsControlerCenterDragging}/>
                       </div>
 
 
