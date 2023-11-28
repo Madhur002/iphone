@@ -41,9 +41,9 @@ export default function Home() {
   const [newFocus, setNewFocus] = useState("");
 
   useEffect(() => {
+    const pillBar: any = pillBarRef.current;
+    const followPill: any = followPillRef.current;
     if (!showHomeScreen) {
-      const pillBar: any = pillBarRef.current;
-      const followPill: any = followPillRef.current;
       console.log("pillBar");
       console.log(pillBar);
       console.log("followPill");
@@ -323,7 +323,7 @@ function removeAnimateClass() {
 
 
   return (
-    <main className="sm:flex-col md:flex-col sm:items-center md:items-center flex bg-white z-[50000] h-screen overflow-hidden items-center justify-center p-24">
+    <main className="flex bg-white z-[50000] h-screen overflow-hidden items-center justify-center p-24">
       <div className="h-[603px] w-[303px] bg-[#cdbabc] flex justify-center items-center rounded-[50px]">
         <div className="flex z-50 flex-col items-center justify-between h-[600px] w-[300px] bg-black border-4 border-[#f3dadd] rounded-[50px] p-[10px]">
           <div
@@ -457,19 +457,19 @@ function removeAnimateClass() {
           onClick={() => {
             handlePowerOn();
           }}
-          className="text-gray-400 font-semibold flex gap-2 mt-[150px] sm:mt-4 md:mt-4 ml-4 sm:ml-0 md:ml-0 items-center"
+          className="text-gray-400 font-semibold flex gap-2 mt-[150px] sm:mt-4 md:mt-4 ml-4 sm:ml-2 md:ml-2 items-center"
         >
           <FaPowerOff className="text-white bg-gray-300 select-none p-2 text-3xl rounded-full" />
-          <p className="pt-1 select-none"> Power on</p>
+          <p className="pt-1 select-none sm:hidden md:hidden"> Power on</p>
         </button>
         <button
           onClick={() => {
             handleControlCenter();
           }}
-          className="text-gray-400 font-semibold flex gap-2 mt-[150px] sm:mt-4 md:mt-4 ml-4 sm:ml-0 md:ml-0 items-center"
+          className="text-gray-400 font-semibold flex gap-2 mt-[150px] sm:mt-4 md:mt-4 ml-4 sm:ml-2 md:ml-2 items-center"
         >
           <FaFilePowerpoint className="text-white bg-gray-300 select-none p-2 text-3xl rounded-full" />
-          <p className="pt-1 select-none"> Hide</p>
+          <p className="pt-1 select-none sm:hidden md:hidden"> Hide</p>
         </button>
       </div>
       <div className="sm:hidden md:hidden flex z-50 flex-col items-center justify-between h-[600px] w-[300px] bg-black border-4 border-[#f3dadd] rounded-[50px] p-[10px]">
