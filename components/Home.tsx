@@ -389,14 +389,12 @@ function removeAnimateClass() {
                     </div>
                     </div>
                       <div
-                        className={`backdrop-blur-xl bg-[#ffffff21] notification-center ${showNotificationCenter ? `animate__animated animate__fadeInDown w-full z-[99999999] h-full absolute`: `hidden`}`}
+                        className={`backdrop-blur-3xl bg-[#ffffff21] notification-center ${showNotificationCenter ? `animate__animated animate__fadeInDown w-full z-[99999999] h-full absolute`: `hidden`}`}
                         >
-                        Notification center Div
                       </div>
                       <div
-                        className={`backdrop-blur-xl bg-[#ffffff21] control-center ${showControlCenter ? `animate__animated animate__fadeInDown w-full z-[99999999] h-full absolute`: `hidden`}`}
+                        className={`backdrop-blur-3xl bg-[#ffffff21] control-center ${showControlCenter ? `animate__animated animate__fadeInDown w-full z-[99999999] h-full absolute`: `hidden`}`}
                         >
-                        Control center Div
                       </div>
 
 
