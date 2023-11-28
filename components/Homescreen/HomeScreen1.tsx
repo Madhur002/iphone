@@ -43,14 +43,14 @@ const HomeScreen1 = () => {
 
   return (
     <div>
-      <div className=" select-none rounded-2xl flex items-center justify-center w-full gap-2 h-[120px]">
-        <div className=" select-none text-[8px] cursor-pointer gap-[3px] text-white rounded-2xl w-full h-full flex flex-col justify-center items-center">
+      <div className=" select-none rounded-2xl flex items-center justify-center w-full gap-4 h-[120px]">
+        <div className=" select-none text-[8px] cursor-pointer gap-[3px] text-white rounded-2xl w-[105px] h-full flex flex-col justify-center items-center">
           {weatherData ? (
-            <div className=" select-none bg-white-400 p-3 grad1 rounded-2xl w-full h-full text-[#ffffffcc]">
+            <div className="overflow-hidden select-none bg-white-400 p-3 grad1 rounded-2xl w-full h-full text-[#ffffffcc]">
               <p className=" select-none flex gap-1 items-center text-[10px] font-semibold">
                 {weatherData.name} <IoPaperPlaneSharp className="text-[8px]" />
               </p>
-              <p className=" select-none text-[30px] mt-[-7px] font-light ">
+              <p className=" select-none text-[28px] mt-[-8px] font-light ">
                 {weatherData.main.temp}&#176;
               </p>
               <BsCloudLightningFill className="text-[12px]" />
@@ -63,11 +63,11 @@ const HomeScreen1 = () => {
               </p>
             </div>
           ) : (
-            <div className=" select-none bg-white-400 p-3 grad1 rounded-2xl w-full h-full text-[#ffffffcc]">
+            <div className="overflow-hidden select-none bg-white-400 p-3 grad1 rounded-2xl w-[110px] h-full text-[#ffffffcc]">
               <p className=" select-none flex gap-1 items-center text-[10px] font-semibold">
                 Ajmer <IoPaperPlaneSharp className="text-[8px]" />
               </p>
-              <p className=" select-none text-[30px] mt-[-7px] font-light ">
+              <p className=" select-none text-[28px] mt-[-8px] font-light ">
                 76&#176;
               </p>
               <BsCloudLightningFill className="text-[12px]" />
@@ -81,7 +81,7 @@ const HomeScreen1 = () => {
           )}
           Weather
         </div>
-        <div className=" select-none cursor-pointer text-[8px] gap-[3px] font-bold text-white rounded-2xl w-full h-full flex flex-col justify-center items-center">
+        <div className="overflow-hidden select-none cursor-pointer text-[8px] gap-[3px] font-bold text-white rounded-2xl w-[105px] h-full flex flex-col justify-center items-center">
           <div className=" select-none bg-white flex flex-col p-3  rounded-2xl w-full h-full text-[#000000cc]">
             <p className=" select-none flex gap-1 items-center text-[8px] text-[#e0797c] font-bold uppercase">
               {daysOfWeek[currentDate.getDay()]}
@@ -98,7 +98,7 @@ const HomeScreen1 = () => {
         </div>
       </div>
       <div className=" select-none w-full h-full flex gap-4 pt-3 flex-col items-center">
-        <div className=" select-none flex h-[55px] w-full justify-between">
+        <div className="select-none flex h-[55px] w-full justify-between">
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
             <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
               <Image
@@ -113,11 +113,11 @@ const HomeScreen1 = () => {
             FaceTime
           </div>
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10 flex gap-[2px] justify-center flex-col items-center w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
-              <p className=" select-none flex gap-1 items-center text-[6px] text-[#e0797c] font-bold uppercase">
+            <button className="h-10 flex justify-center flex-col items-center pt-[10px] w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
+              <p className=" select-none flex gap-1 items-center text-[7px] text-[#e0797c] font-bold uppercase">
                 {daysOfWeek[currentDate.getDay()]}
               </p>
-              <p className=" select-none text-black text-[18px] mt-[-7px] font-normal ">
+              <p className=" select-none text-black text-[24px] mt-[-7px] font-extralight ">
                 {currentDate.getDate()}
               </p>
             </button>

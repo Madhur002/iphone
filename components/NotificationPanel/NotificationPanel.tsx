@@ -26,14 +26,14 @@ const NotificationPanel = ({ color }: any) => {
   const formattedTime = currentDateTime.toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "numeric",
-    hour12: false,
+    hour12: true,
   });
 
   return (
     <div
-      className={`flex text-xs justify-between ${
+      className={`z-[45] flex text-xs justify-between ${
         color === "white" ? "text-white" : "text-white"
-      }  select-none font-semibold px-3 items-center h-4 w-full z-[300]`}
+      }  select-none font-semibold px-3 items-center h-4 w-full z-[40]`}
     >
       <p
         className={`${

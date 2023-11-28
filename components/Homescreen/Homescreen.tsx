@@ -6,16 +6,21 @@ import SearchBar from "../SearchBar/SearchBar";
 
 const Homescreen = ({ showHomeScreen }: any) => {
   return (
+    <>
+    <div className="p-2 z-[45] w-full">
+    <NotificationPanel color={"white"} />
+    </div>
     <div
-      className={`bg-transparent p-2 flex gap-3 flex-col justify-between items-center text-black h-full w-full z-50 zoom-out-animation ${
+      className={`bg-transparent p-2 mt-[-15px] flex  flex-col justify-between items-center text-black h-full w-full zoom-out-animation ${
         showHomeScreen ? "normal-size" : ""
       }`}
-    >
-      <NotificationPanel color={"white"} />
+      style={{zIndex: "55"}}
+      >
       <AppDrawer />
       <SearchBar/>
       <Navbar />
     </div>
+      </>
   );
 };
 
