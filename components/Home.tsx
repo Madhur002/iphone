@@ -452,12 +452,12 @@ function removeAnimateClass() {
           </div>
         </div>
       </div>
-      <div className="h-[603px] sm:h-[150px] md:h-[150px]">
+      <div className="h-[603px] sm:h-[50px] md:h-[50px]">
         <button
           onClick={() => {
             handlePowerOn();
           }}
-          className="text-gray-400 font-semibold flex gap-2 mt-[150px] ml-4 items-center"
+          className="text-gray-400 font-semibold flex gap-2 mt-[150px] sm:mt-4 md:mt-4 ml-4 sm:ml-0 md:ml-0 items-center"
         >
           <FaPowerOff className="text-white bg-gray-300 select-none p-2 text-3xl rounded-full" />
           <p className="pt-1 select-none"> Power on</p>
@@ -466,10 +466,10 @@ function removeAnimateClass() {
           onClick={() => {
             handleControlCenter();
           }}
-          className="text-gray-400 font-semibold flex gap-2 mt-[150px] ml-4 items-center"
+          className="text-gray-400 font-semibold flex gap-2 mt-[150px] sm:mt-4 md:mt-4 ml-4 sm:ml-0 md:ml-0 items-center"
         >
           <FaFilePowerpoint className="text-white bg-gray-300 select-none p-2 text-3xl rounded-full" />
-          <p className="pt-1 select-none"> Power on</p>
+          <p className="pt-1 select-none"> Hide</p>
         </button>
       </div>
       <div className="sm:hidden md:hidden flex z-50 flex-col items-center justify-between h-[600px] w-[300px] bg-black border-4 border-[#f3dadd] rounded-[50px] p-[10px]">
