@@ -76,16 +76,46 @@ body{
   backdrop-filter: blur(30px) !important;
   -webkit-backdrop-filter: blur(30px) !important;
   opacity: 0; /* Set initial opacity to 0 */
+  display: flex !important;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  z-index: 999;
   animation: fadeIn 1s ease-in-out forwards; /* Use a fadeIn animation with a duration of 1 second */
-
   /* Optionally, you can add other transition properties like transition-delay */
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0; /* Start with opacity 0 */
+    display: flex !important;
   }
   to {
     opacity: 1; /* End with opacity 1 */
+    display: flex !important;
+  }
+}
+
+.frontBG {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  z-index: 999;
+  animation: fadeOut 1s ease-in-out forwards; /* Use a fadeOut animation with a duration of 1 second */
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    display: flex;
+  }
+  to {
+    opacity: 0;
+    display: none;
   }
 }

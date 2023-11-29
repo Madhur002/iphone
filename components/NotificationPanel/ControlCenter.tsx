@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { FaWifi } from "react-icons/fa";
 import { MdFlight } from "react-icons/md";
 import { PiBluetoothBold } from "react-icons/pi";
@@ -16,12 +17,56 @@ import { IoMdMoon } from "react-icons/io";
 const ControlCenter = ({
   setShowControlCenter,
   setIsControlerCenterDragging,
+  showControlCenter,
 }: any) => {
   const color = "white";
+  const [initialTouchY, setInitialTouchY] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
   const handleControlCenter = () => {
     setShowControlCenter(false);
+    setIsDragging(false);
     setIsControlerCenterDragging(false);
   };
+
+  const onTouchStart = (e: React.TouchEvent<HTMLButtonElement>) => {
+    setInitialTouchY(e.touches[0].clientY);
+  };
+
+  const onTouchMove = (e: React.TouchEvent<HTMLButtonElement>) => {
+    const currentY = e.touches[0].clientY;
+    const deltaY = initialTouchY - currentY;
+
+    // You can adjust the threshold as needed
+    if (deltaY > 50) {
+      handleControlCenter();
+    }
+  };
+
+  const onTouchEnd = () => {
+    setInitialTouchY(0);
+  };
+
+  const onMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setInitialTouchY(e.clientY);
+    setIsDragging(true);
+  };
+
+  const onMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (isDragging) {
+      const currentY = e.clientY;
+      const deltaY = initialTouchY - currentY;
+
+      if (deltaY > 50) {
+        handleControlCenter();
+      }
+    }
+  };
+
+  const onMouseUp = () => {
+    setInitialTouchY(0);
+    setIsDragging(false);
+  };
+
   return (
     <div className="h-full w-full px-6 flex flex-col gap-4 items-center justify-end">
       <div className="h-[5%] w-full"></div>
@@ -166,15 +211,12 @@ const ControlCenter = ({
         </div>
       </div>
       <button
-        onTouchStart={() => {
-          handleControlCenter();
-        }}
-        onDragStart={() => {
-            handleControlCenter();
-          }}
-        onClick={() => {
-          handleControlCenter();
-        }}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
         className="h-[25%] w-full"
       ></button>
     </div>
