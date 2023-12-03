@@ -23,7 +23,7 @@ export default function Home() {
   const [showNotificationCenter, setShowNotificationCenter] = useState(false);
   const [powerOn, setPowerOn] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  const [sliderValue, setSliderValue] = useState(0); // Initial value for the slider
+  const [sliderValue, setSliderValue] = useState(50); // Initial value for the slider
   const [isControlerCenterDragging, setIsControlerCenterDragging] =
     useState(false);
   const [isNotificationCenterDragging, setIsNotificationCenterDragging] =
@@ -42,16 +42,25 @@ export default function Home() {
   const [offset, setOffset] = useState(0);
   const [newFocus, setNewFocus] = useState("");
 
-  const generateHexCode = (value: any) => {
+
+  const generateHexCode = (value:any) => {
     // Convert slider value to a percentage
     const percentage = value / 100;
-
+  
     // Calculate the color value based on the percentage
-    const colorValue = Math.round(255 - percentage * 255);
-
+    let colorValue;
+  
+    if (percentage <= 0.5) {
+      // For values from 0 to 50, produce white
+      colorValue = 255;
+    } else {
+      // For values beyond 50, transition to darker shades
+      colorValue = Math.round(255 - (percentage - 0.5) * 2 * 255);
+    }
+  
     // Convert the color value to a hexadecimal string
     const hexCode = colorValue.toString(16).padStart(2, '0');
-
+  
     // Generate the hex code by repeating the same value for RGB
     return `#${hexCode}${hexCode}${hexCode}`;
   };

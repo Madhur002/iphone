@@ -14,6 +14,10 @@ import { FaPlay } from "react-icons/fa";
 import { IoPlayForward } from "react-icons/io5";
 import { IoPlayBack } from "react-icons/io5";
 import { IoMdMoon } from "react-icons/io";
+import useStore from "@/store/store";
+import useNetwork from "@/store/network";
+import useBluetooth from "@/store/bluetooth";
+import useFlightmode from "@/store/flightmode";
 const ControlCenter = ({
   setShowControlCenter,
   setIsControlerCenterDragging,
@@ -24,7 +28,10 @@ const ControlCenter = ({
   const color = "white";
   const [initialTouchY, setInitialTouchY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-
+  const { wifiOn, toggleWifi } = useStore();
+  const { network, toggleNetwork } = useNetwork();
+  const { bluetooth, toggleBluetooth } = useBluetooth();
+  const { flightmode, toggleFlightmode } = useFlightmode();
   const handleSliderChange = (event: any) => {
     setSliderValue(event.target.value);
   };
@@ -134,18 +141,18 @@ const ControlCenter = ({
         <div className="w-full gap-3 flex justify-between items-center">
           <div className="bg-[#00000062] w-28 h-28 rounded-2xl flex flex-col justify-center gap-[10px] p-[10px] items-center">
             <div className="h-[50%] w-full flex justify-center items-center gap-2">
-              <div className="h-full w-[50%] rounded-full bg-[#ffffff59] text-white text-xl flex justify-center rotate-90 items-center">
+              <div onClick={()=>{toggleFlightmode(!flightmode)}} className={`h-full w-[50%] rounded-full ${ flightmode ? "bg-[#287ed4]" : "bg-[#287ed48d]" } text-white text-xl flex justify-center rotate-90 items-center`}>
                 <MdFlight />
               </div>
-              <div className="h-full w-[50%] rounded-full bg-[#ffffff59] text-white text-xl flex justify-center items-center">
+              <div onClick={()=>{toggleNetwork(!network)}} className={`h-full w-[50%] rounded-full ${ network ? "bg-[#43d548]" : "bg-[#287ed48d]" } text-white text-xl flex justify-center items-center`}>
                 <FaTowerBroadcast />
               </div>
             </div>
-            <div className="h-[50%] w-full flex justify-center items-center gap-2">
-              <div className="h-full w-[50%] rounded-full bg-[#ffffff59] text-white text-xl flex justify-center items-center">
+            <div  className="h-[50%] w-full flex justify-center items-center gap-2">
+              <div onClick={()=>{toggleWifi(!wifiOn)}} className={`h-full w-[50%] rounded-full ${ wifiOn ? "bg-[#287ed4]" : "bg-[#287ed48d]" } text-white text-xl flex justify-center items-center`}>
                 <FaWifi />
               </div>
-              <div className="h-full w-[50%] rounded-full bg-[#ffffff59] text-white text-xl flex justify-center items-center">
+              <div onClick={()=>{toggleBluetooth(!bluetooth)}} className={`h-full w-[50%] rounded-full ${ bluetooth ? "bg-[#287ed4]" : "bg-[#287ed48d]" } text-white text-xl flex justify-center items-center`}>
                 <PiBluetoothBold />
               </div>
             </div>
