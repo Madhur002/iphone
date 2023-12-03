@@ -119,3 +119,52 @@ body{
     display: none;
   }
 }
+
+/* SliderComponent.css */
+
+/* .slider-container {
+  margin: 20px;
+} */
+
+.vertical-slider-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.vertical-slider {
+  transform: rotate(90deg);
+  transform-origin: bottom;
+}
+
+.custom-slider {
+  background-color: #00000097; /* Set the background color of the slider track */
+  border: none; /* Remove the default border of the slider */
+  outline: none; /* Remove the default focus outline */
+  border-radius: 16px;
+  /* position: absolute !important; */
+}
+
+.custom-slider::-webkit-slider-thumb {
+  /* Customize the appearance of the slider thumb in WebKit browsers (Chrome, Safari) */
+  -webkit-appearance: none;
+  width: 0px; /* Set the width of the slider thumb */
+  height: 0px; /* Set the height of the slider thumb */
+  background-color: #3498db; /* Set the background color of the slider thumb */
+  border: 0px solid #ffffff; /* Add a border to the slider thumb */
+  border-radius: 50%; /* Create a circular slider thumb */
+  cursor: pointer; /* Change the cursor on hover */
+  display: none !important;
+}
+
+.custom-slider::-moz-range-thumb {
+  /* Customize the appearance of the slider thumb in Mozilla browsers (Firefox) */
+  width: 0px;
+  height: 0px;
+  background-color: #3498db;
+  border: 0px solid #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none !important;
+}

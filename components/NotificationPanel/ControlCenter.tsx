@@ -18,10 +18,17 @@ const ControlCenter = ({
   setShowControlCenter,
   setIsControlerCenterDragging,
   showControlCenter,
+  sliderValue,
+  setSliderValue,
 }: any) => {
   const color = "white";
   const [initialTouchY, setInitialTouchY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+
+  const handleSliderChange = (event: any) => {
+    setSliderValue(event.target.value);
+  };
+
   const handleControlCenter = () => {
     setShowControlCenter(false);
     setIsDragging(false);
@@ -65,6 +72,11 @@ const ControlCenter = ({
   const onMouseUp = () => {
     setInitialTouchY(0);
     setIsDragging(false);
+  };
+
+  const getSliderTrackColor = () => {
+    const percentage = (sliderValue / 100) * 100;
+    return `linear-gradient(90deg, #ffffff ${percentage}%, #00000062 ${percentage}%)`;
   };
 
   return (
@@ -175,8 +187,20 @@ const ControlCenter = ({
             </div>
           </div>
           <div className="w-full h-full flex gap-2 justify-between items-center">
-            <div className="bg-[#00000062] h-28 w-12 rounded-2xl flex flex-col items-center justify-end p-2 text-white pb-4">
-              <BsSunFill />
+            <div className="h-28 w-12 rounded-2xl relative flex items-center justify-start text-white">
+              <div className="absolute bottom-[15px] w-full flex justify-center items-center z-10">
+              <BsSunFill className={`${sliderValue < 40 ? "text-white text-xl" : "text-[#00000091] text-xl"}`}/>
+              </div>
+              <input
+                type="range"
+                id="slider"
+                min="0"
+                max="100"
+                value={sliderValue}
+                onChange={handleSliderChange}
+                className="custom-slider rotate-[270deg] ml-[-32px] w-28 h-12 absolute"
+                style={{ background: getSliderTrackColor() }}
+              />
             </div>
             <div className="bg-[#00000062] h-28 w-12 rounded-2xl flex flex-col items-center justify-end p-2 text-white pb-4">
               <RxSpeakerLoud />
@@ -218,7 +242,8 @@ const ControlCenter = ({
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
         className="h-[25%] w-full"
-      ></button>
+      >
+      </button>
     </div>
   );
 };

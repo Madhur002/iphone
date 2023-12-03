@@ -23,6 +23,7 @@ export default function Home() {
   const [showNotificationCenter, setShowNotificationCenter] = useState(false);
   const [powerOn, setPowerOn] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [sliderValue, setSliderValue] = useState(0); // Initial value for the slider
   const [isControlerCenterDragging, setIsControlerCenterDragging] =
     useState(false);
   const [isNotificationCenterDragging, setIsNotificationCenterDragging] =
@@ -40,6 +41,20 @@ export default function Home() {
   const [focus, setFocus] = useState(0);
   const [offset, setOffset] = useState(0);
   const [newFocus, setNewFocus] = useState("");
+
+  const generateHexCode = (value: any) => {
+    // Convert slider value to a percentage
+    const percentage = value / 100;
+
+    // Calculate the color value based on the percentage
+    const colorValue = Math.round(255 - percentage * 255);
+
+    // Convert the color value to a hexadecimal string
+    const hexCode = colorValue.toString(16).padStart(2, '0');
+
+    // Generate the hex code by repeating the same value for RGB
+    return `#${hexCode}${hexCode}${hexCode}`;
+  };
 
   useEffect(() => {
     const pillBar: any = pillBarRef.current;
@@ -296,37 +311,10 @@ export default function Home() {
     hour12: false,
   });
 
-  // if (showNotificationCenter) {
-  //   setTimeout(removeAnimateClass, 800); // 200 milliseconds delay
-  // }
-  // if (showControlCenter) {
-  //   setTimeout(removeAnimateClass, 800); // 200 milliseconds delay
-  // }
-  // Define a function to remove the animate_animated class
-// function removeAnimateClass() {
-//   // Select the div elements by their class names
-//   const notificationCenterDiv = document.querySelector('.notification-center');
-//   const controlCenterDiv = document.querySelector('.control-center');
-
-//   // Check if the div elements exist before trying to remove the class
-//   // if (notificationCenterDiv) {
-//   //   notificationCenterDiv.classList.remove('animate_animated');
-//   //   notificationCenterDiv.classList.remove('bg-[#ffffff80]');
-//   //   notificationCenterDiv.classList.add('bg-[#ffffff21]');
-//   //   notificationCenterDiv.classList.remove('animate__fadeInDown');
-//   // }
-
-//   if (controlCenterDiv) {
-//     controlCenterDiv.classList.remove('animate_animated');
-//     controlCenterDiv.classList.remove('bg-[#ffffff80]');
-//     controlCenterDiv.classList.add('bg-[#ffffff21]');
-//     controlCenterDiv.classList.remove('animate__fadeInDown');
-//   }
-// }
-
 
   return (
-    <main className="select-none flex bg-white z-[50000] h-screen overflow-hidden items-center justify-center p-24">
+    <main className="select-none flex bg-white z-[50000] h-screen overflow-hidden items-center justify-center p-24"
+    style={{ backgroundColor: generateHexCode(sliderValue) }}>
       <div className="select-none h-[603px] w-[303px] bg-[#cdbabc] flex justify-center items-center rounded-[50px]">
         <div className="select-none flex z-50 flex-col items-center justify-between h-[600px] w-[300px] bg-black border-4 border-[#f3dadd] rounded-[50px] p-[10px]">
           <div
@@ -399,7 +387,7 @@ export default function Home() {
                       <div
                         className={`control-center ${showControlCenter ? `backBG w-full z-[999] h-full absolute flex justify-end items-center`: `hidden`}`}
                         >
-                          <ControlCenter setShowControlCenter={setShowControlCenter} setIsControlerCenterDragging={setIsControlerCenterDragging} showControlCenter={showControlCenter}/>
+                          <ControlCenter setShowControlCenter={setShowControlCenter} setIsControlerCenterDragging={setIsControlerCenterDragging} showControlCenter={showControlCenter} sliderValue={sliderValue} setSliderValue={setSliderValue}/>
                       </div>
 
 

@@ -100,7 +100,7 @@ const HomeScreen1 = () => {
       <div className=" select-none w-full h-full flex gap-4 pt-3 flex-col items-center">
         <div className="select-none flex h-[55px] w-full justify-between">
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
+            <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
               <Image
                 className="absolute select-none "
                 src="/icons/FaceTime.png"
@@ -124,7 +124,7 @@ const HomeScreen1 = () => {
             Calendar
           </div>
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
+            <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
               <Image
                 className="absolute select-none "
                 src="/icons/photos.png"
@@ -137,7 +137,7 @@ const HomeScreen1 = () => {
             Photos
           </div>
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
+            <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
               <Image
                 className="absolute select-none "
                 src="/icons/camera.png"
@@ -152,7 +152,7 @@ const HomeScreen1 = () => {
         </div>
         <div className=" select-none flex h-[55px] w-full justify-between">
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
+            <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
               <Image
                 className="absolute select-none "
                 src="/icons/mail.png"
@@ -165,7 +165,7 @@ const HomeScreen1 = () => {
             Mail
           </div>
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
+            <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
               <Image
                 className="absolute select-none "
                 src="/icons/notes.png"
@@ -178,7 +178,7 @@ const HomeScreen1 = () => {
             Notes
           </div>
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
+            <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
               <Image
                 className="absolute select-none "
                 src="/icons/reminders.png"
@@ -191,7 +191,7 @@ const HomeScreen1 = () => {
             Reminders
           </div>
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
+            <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
               <Image
                 className="absolute select-none "
                 src="/icons/clock.png"
@@ -206,7 +206,7 @@ const HomeScreen1 = () => {
         </div>
         <div className=" select-none flex h-[55px] w-full justify-between">
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
+            <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
               <Image
                 className="absolute select-none "
                 src="/icons/instagram.png"
@@ -219,7 +219,7 @@ const HomeScreen1 = () => {
             Instagram
           </div>
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
+            <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
               <Image
                 className="absolute select-none "
                 src="/icons/appleTV.png"
@@ -232,7 +232,7 @@ const HomeScreen1 = () => {
             TV
           </div>
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
+            <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
               <Image
                 className="absolute select-none "
                 src="/icons/podcast.png"
@@ -245,7 +245,7 @@ const HomeScreen1 = () => {
             Podcasts
           </div>
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
+            <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
               <Image
                 className="absolute select-none "
                 src="/icons/appstore.png"
@@ -260,7 +260,7 @@ const HomeScreen1 = () => {
         </div>
         <div className=" select-none flex h-[55px] w-full justify-between">
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
+            <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
               <Image
                 className="absolute select-none "
                 src="/icons/maps.png"
@@ -273,7 +273,7 @@ const HomeScreen1 = () => {
             Maps
           </div>
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
+            <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
               <Image
                 className="absolute select-none "
                 src="/icons/health.png"
@@ -286,7 +286,7 @@ const HomeScreen1 = () => {
             Health
           </div>
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
+            <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
               <Image
                 className="absolute select-none "
                 src="/icons/wallet.png"
@@ -299,7 +299,7 @@ const HomeScreen1 = () => {
             Wallet
           </div>
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
-            <button className="h-10  w-10 bg-pink-300 shadow-lg  cursor-pointer rounded-xl relative">
+            <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
               <Image
                 className="absolute select-none "
                 src="/icons/settings.png"
