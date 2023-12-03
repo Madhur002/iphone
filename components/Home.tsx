@@ -10,8 +10,9 @@ import { IoLockOpen } from "react-icons/io5";
 import { BsFillUnlockFill } from "react-icons/bs";
 import { IoIosFlashlight } from "react-icons/io";
 import { HiCamera } from "react-icons/hi2";
-import 'animate.css';
+import "animate.css";
 import ControlCenter from "./NotificationPanel/ControlCenter";
+import FullscreenButton from "./Buttons/FullScreen";
 
 export default function Home() {
   const pillBarRef = useRef(null);
@@ -42,14 +43,13 @@ export default function Home() {
   const [offset, setOffset] = useState(0);
   const [newFocus, setNewFocus] = useState("");
 
-
-  const generateHexCode = (value:any) => {
+  const generateHexCode = (value: any) => {
     // Convert slider value to a percentage
     const percentage = value / 100;
-  
+
     // Calculate the color value based on the percentage
     let colorValue;
-  
+
     if (percentage <= 0.5) {
       // For values from 0 to 50, produce white
       colorValue = 255;
@@ -57,10 +57,10 @@ export default function Home() {
       // For values beyond 50, transition to darker shades
       colorValue = Math.round(255 - (percentage - 0.5) * 2 * 255);
     }
-  
+
     // Convert the color value to a hexadecimal string
-    const hexCode = colorValue.toString(16).padStart(2, '0');
-  
+    const hexCode = colorValue.toString(16).padStart(2, "0");
+
     // Generate the hex code by repeating the same value for RGB
     return `#${hexCode}${hexCode}${hexCode}`;
   };
@@ -177,7 +177,7 @@ export default function Home() {
           // setFocus(controlCenter.style.top);
           // setNewFocus(`${rect.height - offsetY + 80}px`)
 
-          if ((offsetY >= 30) && (offsetY <= 300) || touchMoveDistance >= 50) {
+          if ((offsetY >= 30 && offsetY <= 300) || touchMoveDistance >= 50) {
             setShowControlCenter(true);
             setIsControlerCenterDragging(false);
           }
@@ -241,7 +241,8 @@ export default function Home() {
             offsetY = e.touches[0].clientY - rect.top;
           }
 
-          const touchMoveDistance = offsetY - touchNotificationCenterStartPosition;
+          const touchMoveDistance =
+            offsetY - touchNotificationCenterStartPosition;
           console.log("offsetY");
           console.log(offsetY);
           setOffset(offsetY);
@@ -250,7 +251,7 @@ export default function Home() {
           // setFocus(controlCenter.style.top);
           // setNewFocus(`${rect.height - offsetY + 80}px`)
 
-          if ((offsetY >= 30) && (offsetY <= 300) || touchMoveDistance >= 50) {
+          if ((offsetY >= 30 && offsetY <= 300) || touchMoveDistance >= 50) {
             setShowNotificationCenter(true);
             setIsNotificationCenterDragging(false);
           }
@@ -320,13 +321,15 @@ export default function Home() {
     hour12: false,
   });
 
-
   return (
-    <main className="select-none flex bg-white z-[50000] h-screen overflow-hidden items-center justify-center p-24"
-    style={{ backgroundColor: generateHexCode(sliderValue) }}>
+    <main
+      className="select-none flex bg-white z-[50000] h-screen overflow-hidden items-center justify-center p-24"
+      style={{ backgroundColor: generateHexCode(sliderValue) }}
+    >
       <div className="select-none h-[603px] w-[303px] bg-[#cdbabc] flex justify-center items-center rounded-[50px]">
         <div className="select-none flex z-50 flex-col items-center justify-between h-[600px] w-[300px] bg-black border-4 border-[#f3dadd] rounded-[50px] p-[10px]">
           <div
+            id="fullscreenDiv"
             className="select-none h-full overflow-hidden w-full z-10 rounded-[35px] flex flex-col items-center relative"
             ref={pillBarRef}
           >
@@ -373,36 +376,51 @@ export default function Home() {
                 />
                 {showHomeScreen && (
                   <>
-                  <div className="draggable-none bg-transparent h-full w-full absolute flex justify-between"
-                    style={{zIndex: "49"}}>
                     <div
-                      className="bg-transparent h-full w-[50%] relative"
-                      ref={NotificationRef}
-                      style={{zIndex: "49"}}
-                      >
+                      className="draggable-none bg-transparent h-full w-full absolute flex justify-between"
+                      style={{ zIndex: "49" }}
+                    >
+                      <div
+                        className="bg-transparent h-full w-[50%] relative"
+                        ref={NotificationRef}
+                        style={{ zIndex: "49" }}
+                      ></div>
+                      <div
+                        className="bg-transparent h-full w-[50%] relative"
+                        ref={controlCenterRef}
+                        style={{ zIndex: "49" }}
+                      ></div>
                     </div>
                     <div
-                      className="bg-transparent h-full w-[50%] relative"
-                      ref={controlCenterRef}
-                      style={{zIndex: "49"}}
-                      >
+                      className={`notification-center ${
+                        showNotificationCenter
+                          ? `backBG w-full z-[999] h-full absolute flex justify-center items-center`
+                          : `hidden`
+                      }`}
+                    >
+                      <ControlCenter />
                     </div>
+                    <div
+                      className={`control-center ${
+                        showControlCenter
+                          ? `backBG w-full z-[999] h-full absolute flex justify-end items-center`
+                          : `hidden`
+                      }`}
+                    >
+                      <ControlCenter
+                        setShowControlCenter={setShowControlCenter}
+                        setIsControlerCenterDragging={
+                          setIsControlerCenterDragging
+                        }
+                        showControlCenter={showControlCenter}
+                        sliderValue={sliderValue}
+                        setSliderValue={setSliderValue}
+                      />
                     </div>
-                      <div
-                        className={`notification-center ${showNotificationCenter ? `backBG w-full z-[999] h-full absolute flex justify-center items-center`: `hidden`}`}
-                        >
-                          <ControlCenter/>
-                      </div>
-                      <div
-                        className={`control-center ${showControlCenter ? `backBG w-full z-[999] h-full absolute flex justify-end items-center`: `hidden`}`}
-                        >
-                          <ControlCenter setShowControlCenter={setShowControlCenter} setIsControlerCenterDragging={setIsControlerCenterDragging} showControlCenter={showControlCenter} sliderValue={sliderValue} setSliderValue={setSliderValue}/>
-                      </div>
-
 
                     <Homescreen showHomeScreen={showHomeScreen} />
                     <Image
-                    style={{zIndex: "40"}}
+                      style={{ zIndex: "40" }}
                       className={`draggable-none absolute select-none rounded-[35px] ${
                         showHomeScreen ? "normal-size" : ""
                       }`}
@@ -471,6 +489,7 @@ export default function Home() {
           <FaFilePowerpoint className="text-white bg-gray-300 select-none p-2 text-3xl rounded-full" />
           <p className="pt-1 select-none sm:hidden md:hidden"> Hide</p>
         </button>
+        <FullscreenButton targetId="fullscreenDiv" />
       </div>
       <div className="sm:hidden md:hidden flex z-50 flex-col items-center justify-between h-[600px] w-[300px] bg-black border-4 border-[#f3dadd] rounded-[50px] p-[10px]">
         <div className="h-full  select-none overflow-hidden w-full z-10 rounded-[35px] bg-black flex justify-center relative">
