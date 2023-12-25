@@ -21,37 +21,38 @@ const AnalogClock = () => {
   const secondDeg = seconds * 6;
 
   return (
-    <div style={{ position: 'relative', width: '200px', height: '200px' }}>
-      <svg width="200" height="200" viewBox="0 0 200 200">
+    <div style={{ position: 'relative', width: '20px', height: '20px' }}>
+      <svg width="10" height="10" viewBox="0 0 200 200">
         <circle cx="100" cy="100" r="90" stroke="#000" strokeWidth="4" fill="none" />
 
         {/* Hour hand */}
         <line
           x1="100"
           y1="100"
-          x2={100 + 40 * Math.cos((hourDeg * Math.PI) / 180)}
-          y2={100 + 40 * Math.sin((hourDeg * Math.PI) / 180)}
+          x2={100 + 50 * Math.cos((hourDeg * Math.PI) / 180)}
+          y2={100 + 50 * Math.sin((hourDeg * Math.PI) / 180)}
           stroke="#000"
-          strokeWidth="6"
+          strokeWidth="4"
         />
 
         {/* Minute hand */}
         <line
           x1="100"
           y1="100"
-          x2={100 + 60 * Math.cos((minuteDeg * Math.PI) / 180)}
-          y2={100 + 60 * Math.sin((minuteDeg * Math.PI) / 180)}
+          x2={100 + 80 * Math.cos((minuteDeg * Math.PI) / 180)}
+          y2={100 + 80 * Math.sin((minuteDeg * Math.PI) / 180)}
           stroke="#000"
           strokeWidth="4"
+          className='rounded-full'
         />
 
         {/* Second hand */}
         <line
           x1="100"
           y1="100"
-          x2={100 + 70 * Math.cos((secondDeg * Math.PI) / 180)}
-          y2={100 + 70 * Math.sin((secondDeg * Math.PI) / 180)}
-          stroke="#FF0000"
+          x2={100 + 80 * Math.cos((secondDeg * Math.PI) / 180)}
+          y2={100 + 80 * Math.sin((secondDeg * Math.PI) / 180)}
+          stroke="#c2af03"
           strokeWidth="2"
         />
       </svg>

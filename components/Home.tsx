@@ -324,7 +324,6 @@ export default function Home() {
   return (
     <main
       className="select-none flex bg-white z-[50000] h-screen overflow-hidden items-center justify-center p-24"
-      style={{ backgroundColor: generateHexCode(sliderValue) }}
     >
       <div className="select-none h-[603px] w-[303px] bg-[#cdbabc] flex justify-center items-center rounded-[50px]">
         <div className="select-none flex z-50 flex-col items-center justify-between h-[600px] w-[300px] bg-black border-4 border-[#f3dadd] rounded-[50px] p-[10px]">
@@ -420,7 +419,7 @@ export default function Home() {
 
                     <Homescreen showHomeScreen={showHomeScreen} />
                     <Image
-                      style={{ zIndex: "40" }}
+                      style={{ filter: `brightness(${sliderValue}%)` , zIndex: "40"}}
                       className={`draggable-none absolute select-none rounded-[35px] ${
                         showHomeScreen ? "normal-size" : ""
                       }`}

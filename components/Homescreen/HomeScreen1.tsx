@@ -42,7 +42,7 @@ const HomeScreen1 = () => {
   ];
 
   return (
-    <div>
+    <div className="w-full h-full px-4">
       <div className=" select-none rounded-2xl flex items-center justify-center w-full gap-4 h-[120px]">
         <div className=" select-none text-[8px] cursor-pointer gap-[3px] text-white rounded-2xl w-[105px] h-full flex flex-col justify-center items-center">
           {weatherData ? (
@@ -97,7 +97,7 @@ const HomeScreen1 = () => {
           Calender
         </div>
       </div>
-      <div className=" select-none w-full h-full flex gap-4 pt-3 flex-col items-center">
+      <div className="select-none w-full h-full flex gap-4 pt-3 flex-col items-center">
         <div className="select-none flex h-[55px] w-full justify-between">
           <div className=" select-none text-[8px] gap-[3px] text-white rounded-2xl h-full cursor-pointer flex flex-col justify-center items-center">
             <button className="h-10  w-10 bg-white shadow-lg  cursor-pointer rounded-xl relative">
